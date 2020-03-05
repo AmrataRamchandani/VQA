@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>VQA</title>
+    <!-- Included Bootstrap CSS Files -->
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"  >
+    <script src="../static/js/jquery 2.2.4.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <style>
+      body{
+      background-color: black;
+      }
+      /* Fonts */
+      @font-face {
+      font-family: 'Fredericka the Great';
+      font-style: normal;
+      font-weight: 400;
+      src: url('../static/fonts/FrederickatheGreat-Regular.ttf');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+      }
+      .nav>li>a {
+      border: 4px solid white;
+      background-color: transparent;
+      color:white;
+      }
+      .navbar,.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+      background-color:black;
+      border-color:transparent;
+      height:20%;
+      }
+      .navbar-inverse .navbar-brand ,.navbar-inverse .navbar-nav>li>a {
+      color:#fff;
+      }
+      .footer{
+      color:white;
+      margin-left:80%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" onclick="toggle_visibility('brand')"
+            data-toggle="collapse" data-target="#myNavbar" >
+          <span class="icon-bar" >
+          </span>
+          <span class="icon-bar">
+          </span>
+          <span class="icon-bar">
+          </span>
+          </button>
+          <a class="navbar-brand " href="#" id="brand" style="margin-top:3%;font-family: 'Fredericka the Great', cursive;font-size: 80px;">
+          Visual Question Answering
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right"
+            style="font-family:'Cormorant Upright', serif;font-size: 20px;margin-right: 1%;margin-top: 2%;font-weight:500">
+            <li>
+          <span   style="color:white" class="glyphicon glyphicon-book" data-toggle="modal" data-target="#myModal" ></span>
+            </li>
+            <li>
+              <a href="/demo">Demo
+              </a>
+            </li>
+          </ul>
+        </div>
+        <p class="footer" style="margin-left: 77%;">Handcrafted with <span class="glyphicon glyphicon-heart" style="margin-top: 2%;color:red"></span> yours truly</p>
+      </div>
+    </nav>
+    <center>
+      <img src="../static/images/teampic.png" alt="" />
+    </center>
+    <!-- Modal -->
+ <div class="modal fade" id="myModal" role="dialog">
+   <div class="modal-dialog  modal-lg">
+
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <center class="modal-title"><h3>Visual Question Answering</h3></center>
+       </div>
+       <div class="modal-body">
+         <h4><b>Research</b></h4>
+         <a href="https://www.cc.gatech.edu/~dbatra/papers/vqa_iccv15.pdf">VQA-ICCV-2015</a> </p>
+         <a href="https://visualqa.org">VQA Organization</a>
+       </br>
+         <h4><b>Task</b></h4>
+Given an image and a natural language question about the image,building a system that can answer that question about the image.
+
+<b>Image</b>
+<center>
+  <img src="../static/images/acc/gateway.jpg" alt="" class="img-responsive"/>
+</center>
+<b>Question</b>
+  What is in the image ?
+<br>
+  <b>Expected answers</b>
+  Boats, Water etc
+
+  <h4><b>Applications</b></h4>
+<ol>
+  <li>To help blind and visually-impaired users.</li>
+  <li>To provide information about an image on the Web or any social media.</li>
+<li>To integrate VQA into image retrieval systems.</li>
+
+</ol>
+
+<h4><b>Approach</b></h4>
+<ol>
+In general, we can outline the approaches in VQA as follows:
+<li>Extract features from the question.</li>
+<li>Extract features from the image.</li>
+<li>Combine the features to generate an answer.</li>
+</ol>
+<center>
+  <img src="../static/images/vqa1.jpg" alt="" class="img-responsive"/>
+</center>
+<ol>
+<li>In the case of image features, CNNs pre-trained on VGGNet was used.</li>
+<li>Question and image encodings are combined via element wise multiplication.</li>
+<li>Regarding the generation of the answer, we modeled the problem as a classification task.</li>
+</ol>
+<b>Neural Network Model</b>
+<ol>
+<li>A multi-layer perceptron (MLP) neural network classifier with three hidden layers and 1000 hidden units (dropout 0.5)
+  in each layer with tanh non-linearity.</li>
+<li>An LSTM model followed by a softmax layer to generate the answer.</li>
+</ol>
+<b>Detailed Flowchart</b>
+
+  <img src="../static/images/vqa2.png" alt="" class="img-responsive"/>
+
+
+<h4><b>Other Possible Approaches</b></h4>
+
+<b>Bayesian Approach </b><br>
+The idea behind bayesian approaches is to model co-occurrence statistics of both the question and the image features, as a way of inferring relationships between questions and images. It models the probability of image features given the question features and the type of the answer.
+
+<h4><b>Contribution of team members</b></h4>
+Paper was studied by all
+<ol>
+<li>Aishwarya - Studied VGG Model</li>
+<li>Moni Shankar Dey - Studied LSTM Part</li>
+<li>Aditya & Punit - Worked on PyTorch Model</li>
+<li>Amrata - Worked on Keras Model and Building website for demo</li>
+</ol>
+
+       </div>
+
+     </div>
+<!-- Modal Over -->
+   </div>
+ </div>
+  </body>
+</html>
